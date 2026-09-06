@@ -1,0 +1,232 @@
+:root {
+  --bg: #f5f6f8;
+  --panel-bg: #ffffff;
+  --text: #1f2328;
+  --text-muted: #767b83;
+  --border: #e4e6ea;
+  --accent: #4f7cff;
+  --accent-contrast: #ffffff;
+  --danger: #e5544d;
+  --shadow: 0 1px 3px rgba(20, 20, 30, 0.08), 0 8px 24px rgba(20, 20, 30, 0.06);
+  --radius: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16171a;
+    --panel-bg: #1f2023;
+    --text: #eceef0;
+    --text-muted: #8b8f96;
+    --border: #2c2d31;
+    --accent: #6c8cff;
+    --accent-contrast: #101114;
+    --danger: #ff6b64;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Pretendard",
+    "Apple SD Gothic Neo", Roboto, sans-serif;
+  display: flex;
+  justify-content: center;
+  padding: 48px 16px;
+}
+
+.app {
+  width: 100%;
+  max-width: 480px;
+}
+
+.app__title {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 20px;
+  letter-spacing: -0.02em;
+}
+
+.add-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.add-form__input {
+  flex: 1;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--panel-bg);
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.add-form__input:focus {
+  border-color: var(--accent);
+}
+
+.add-form__button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: var(--accent-contrast);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.add-form__button:hover {
+  opacity: 0.9;
+}
+
+.todo-panel {
+  background: var(--panel-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.todo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.todo-item:last-child {
+  border-bottom: none;
+}
+
+.todo-item__checkbox {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  cursor: pointer;
+  accent-color: var(--accent);
+}
+
+.todo-item__text {
+  flex: 1;
+  font-size: 15px;
+  word-break: break-word;
+  cursor: text;
+}
+
+.todo-item.is-completed .todo-item__text {
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+.todo-item__edit-input {
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  background: var(--panel-bg);
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+}
+
+.todo-item__delete {
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.todo-item__delete:hover {
+  color: var(--danger);
+  background: rgba(229, 84, 77, 0.1);
+}
+
+.empty-state {
+  margin: 0;
+  padding: 32px 16px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.todo-footer[hidden] {
+  display: none;
+}
+
+.todo-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.filters {
+  display: flex;
+  gap: 4px;
+}
+
+.filters__button {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 13px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.filters__button:hover {
+  background: var(--bg);
+}
+
+.filters__button.is-active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.clear-completed {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.clear-completed:hover {
+  color: var(--danger);
+}
+
+@media (max-width: 480px) {
+  .todo-footer {
+    flex-wrap: wrap;
+  }
+}
